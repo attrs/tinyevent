@@ -1,0 +1,31 @@
+{
+  "name": "tinyevent",
+  "version": "0.0.0",
+  "description": "event dispatcher",
+  "main": "lib/tinyevent.js",
+  "repository": "attrs/tinyevent",
+  "author": "joje <joje.attrs@gmail.com>",
+  "homepage": "https://github.com/attrs/tinyevent",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-header": "^1.8.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
+  },
+  "files": [
+    "lib",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "event",
+    "dispatcher",
+    "attrs",
+    "hierarchical"
+  ]
+}

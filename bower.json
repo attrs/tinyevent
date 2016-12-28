@@ -1,0 +1,27 @@
+{
+  "name": "tinyevent",
+  "version": "0.0.0",
+  "description": "event dispatcher",
+  "main": "dist/tinyevent.min.js",
+  "authors": [
+    "joje <joje.attrs@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "event",
+    "dispatcher",
+    "attrs",
+    "hierarchical"
+  ],
+  "homepage": "https://github.com/attrs/tinyevent",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "npm-shrinkwrap.js",
+    "gulpfile.js",
+    "test",
+    "tests",
+    "examples",
+    "bin"
+  ]
+}
