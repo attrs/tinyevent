@@ -6,6 +6,7 @@
   "repository": "attrs/tinyevent",
   "author": "joje <joje.attrs@gmail.com>",
   "homepage": "https://github.com/attrs/tinyevent",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-header": "^1.8.3",
