@@ -1,6 +1,6 @@
 {
   "name": "tinyevent",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "event dispatcher",
   "main": "lib/tinyevent.js",
   "repository": "attrs/tinyevent",
