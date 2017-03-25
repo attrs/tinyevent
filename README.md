@@ -33,27 +33,21 @@ var tinyevent = window.tinyevent;
 ### Example
 ```javascript
 var dispatcher = tinyevent();
-var dispatcher2 = tinyevent();
-dispatcher.connect(dispatcher2, 'up'); // up | down
 
 var fn = function(e) {
-  console.log(this, e.type, e.detail);
-  
-  //e.preventDefault();
-  //e.stopPropagation();
-  //e.stopImmediatePropagation();
+  console.log(this, e.type, e.target, e.detail);
+  e.preventDefault();
+  e.stopPropagation();
+  e.stopImmediatePropagation();
 };
 
 dispatcher.on('myevent', fn);
-dispatcher2.on('myevent', fn);
-dispatcher.once('myevent', function(e) {});
-dispatcher.off('myevent', fn);
-
 if( dispatcher.fire('myevent', {a:1}) ) {
   var notprevented = dispatcher.fire('myevent', {a:2}, 'up');
 }
 
-dispatcher.disconnect(dispatcher2);
+dispatcher.once('myevent', function(e) {});
+dispatcher.off('myevent', fn);
 
 var b = dispatcher.has('myevent');
 dispatcher.has(fn);
