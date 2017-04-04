@@ -195,16 +195,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var event;
 	    if( typeof type === 'string' ) {
 	      event = EventObject.createEvent(type, detail, scope);
-	    } else if( type instanceof EventObject ) {
+	    } else if( type instanceof window.Event ) {
+	      event = type;
+	    } else if( type.type && typeof type.preventDefault == 'function' ) {
 	      event = type;
 	    } else {
 	      return console.error('illegal arguments, type is must be a string or event', type);
 	    }
 	    event.currentTarget = scope;
 	    
+	    var stopped = false;
 	    var action = function(listener) {
-	      if( event.stoppedImmediate ) return;
-	      listener.call(scope, event);
+	      if( stopped || event.stoppedImmediate ) return stopped = true;
+	      if( listener.call(scope, event) === false ) event.preventDefault();
 	    };
 	    
 	    if( !direction || includeself !== false ) {
@@ -212,7 +215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      (listeners[event.type] || []).slice().reverse().forEach(action);
 	    }
 	    
-	    if( direction && !event.stopped ) {
+	    if( direction && !stopped && !event.stopped ) {
 	      if( direction === 'up' ) {
 	        upstream.every(function(target) {
 	          target.fire && target.fire(event, null, direction);
@@ -277,7 +280,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return this;
 	  };
 	  
+	  // make dom event adaptable
+	  var handleEvent = function(e) {
+	    return fire(e);
+	  };
+	  
 	  return {
+	    handleEvent: handleEvent,
+	    scope: function(o) {
+	      if( !arguments.length ) return scope;
+	      scope = o;
+	    },
 	    on: on,
 	    once: once,
 	    off: off,
